@@ -110,7 +110,7 @@ if __name__ == '__main__':
     # In the last 20 epochs, set the learning rate to 1e−5 and then decay to 1e−7.
     parser = argparse.ArgumentParser()
     parser.add_argument("--cudnn", type=bool, default=True)
-    parser.add_argument("--checkpoint", type=str, default="./checkpoint2")
+    parser.add_argument("--checkpoint", type=str, default="./checkpoint")
     parser.add_argument("--snapshot_interval", type=int, default=5)
     # For Networks
     parser.add_argument("--total_blocks", type=int, default=12, help='total layers of GFE_Block')
