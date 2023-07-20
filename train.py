@@ -6,7 +6,7 @@ from model.dynamic_regularization import DynamicRegularization
 
 from datasets import LPRDataLoader
 from net.alp_net import SRCNet
-from model.scrnet_loss import lr_warm_cos, SCRNetLoss
+from model.alpnet_loss import lr_warm_cos, SCRNetLoss
 from torch.autograd import Variable
 from tqdm import tqdm
 from utils.update_loss import change_d, get_deta_d
