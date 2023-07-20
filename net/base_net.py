@@ -88,9 +88,9 @@ class ResBlock(nn.Module):
         return x + residual
 
 
-class SRCNet(nn.Module):
+class AlpNet(nn.Module):
     def __init__(self, d, A, total_blocks, ch_list):
-        super(SRCNet, self).__init__()
+        super(AlpNet, self).__init__()
         self.d = d
         self.A = A
         self.R_dy = [(i + 1) / 12 for i in range(12)]

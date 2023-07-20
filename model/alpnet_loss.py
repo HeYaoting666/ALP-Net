@@ -3,9 +3,9 @@ import torch
 import torch.nn as nn
 
 
-class SCRNetLoss(nn.Module):
+class AlpNetLoss(nn.Module):
     def __init__(self):
-        super(SCRNetLoss, self).__init__()
+        super(AlpNetLoss, self).__init__()
         self.loss_fn = nn.CrossEntropyLoss(reduction='sum')
 
     def forward(self, pred, target):

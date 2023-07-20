@@ -3,7 +3,7 @@ import os.path
 import torch
 
 from datasets import LPRDataLoader, get_dir_paths
-from net.alp_net import SRCNet
+from net.alp_net import AlpNet
 from torch.autograd import Variable
 from utils.utils import accuracy
 
@@ -13,7 +13,7 @@ def main(args):
     test_group = list(map(os.path.basename, test_dirs))
     test_loaders = [LPRDataLoader(path, [256, 64], args.batch_size, shuffle=False, num_workers=2) for path in test_dirs]
 
-    model = SRCNet(d=args.d_init, A=args.A, total_blocks=args.total_blocks, ch_list=args.channel_list).cuda()
+    model = AlpNet(d=args.d_init, A=args.A, total_blocks=args.total_blocks, ch_list=args.channel_list).cuda()
     if args.pretrained_model:
         model.load_state_dict(torch.load(args.pretrained_model))
         print("load pretrained model successful!")

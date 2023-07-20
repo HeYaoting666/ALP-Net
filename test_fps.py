@@ -1,9 +1,9 @@
 import torch
-from net.alp_net import SRCNet
+from net.alp_net import AlpNet
 
 iterations = 3000   # 重复计算的轮次
 
-model = SRCNet(d=0, A=1, total_blocks=12, ch_list=[16, 64, 128, 256]).cuda()
+model = AlpNet(d=0, A=1, total_blocks=12, ch_list=[16, 64, 128, 256]).cuda()
 model.load_state_dict(torch.load('weight/alp_net.pth'))
 
 random_input = torch.randn(1, 3, 64, 256).cuda()

@@ -5,8 +5,8 @@ import torch
 from model.dynamic_regularization import DynamicRegularization
 
 from datasets import LPRDataLoader
-from net.alp_net import SRCNet
-from model.alpnet_loss import lr_warm_cos, SCRNetLoss
+from net.alp_net import AlpNet
+from model.alpnet_loss import lr_warm_cos, AlpNetLoss
 from torch.autograd import Variable
 from tqdm import tqdm
 from utils.update_loss import change_d, get_deta_d
@@ -21,7 +21,7 @@ def main(args):
     val_loader = LPRDataLoader(args.val_path, [256, 64], args.batch_size, shuffle=False, num_workers=args.num_workers)
     loss_list = []
 
-    model = SRCNet(d=args.d_init, A=args.A, total_blocks=args.total_blocks, ch_list=args.channel_list).cuda()
+    model = AlpNet(d=args.d_init, A=args.A, total_blocks=args.total_blocks, ch_list=args.channel_list).cuda()
     if args.pretrained_model:
         f = open(os.path.join(args.pretrained_model_dir, 'model_loss.txt'))
         print("loss pretrained model successful!")
@@ -37,7 +37,7 @@ def main(args):
                                        lr_min=args.lr_min,
                                        total_steps=total_steps,
                                        )
-    loss_func = SCRNetLoss()
+    loss_func = AlpNetLoss()
     headers = ["Epoch", "LearningRate", "TrainLoss", "TestLoss", "TrainAcc.", "TestAcc."]
     logger = Logger(args.checkpoint, headers)
 
